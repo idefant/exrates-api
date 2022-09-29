@@ -2,6 +2,8 @@
 
 A simple Exchange Rates API
 
+Data is collected once a day from [Open Exchange Rates](https://openexchangerates.org/)
+
 ## Features
 
 - Getting up-to-date data
