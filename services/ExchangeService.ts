@@ -2,7 +2,6 @@ import { AxiosResponse } from 'axios';
 import dayjs from 'dayjs';
 
 import Exchange from '../models/Exchange';
-import HttpException from '../models/HttpException';
 import { getActualRatesRequest } from '../requests/oxrRequests';
 import { prepareExchange } from '../utils/exchangeUtils';
 import { filterRates } from '../utils/rateUtils';
@@ -43,7 +42,7 @@ class ExchangeService {
   static async fetchCurrentRates(): Promise<{ status: number; json?: any }> {
     const todayStr = dayjs().utc().format('YYYY-MM-DD');
     if (await Exchange.exists({ _id: todayStr })) {
-      throw new HttpException(400, 'Data already exist');
+      return { status: 400, json: { message: 'Data already exist' } };
     }
 
     type OxrResponse = {
