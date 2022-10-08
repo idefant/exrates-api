@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import cors from 'cors';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import utc from 'dayjs/plugin/utc';
@@ -21,6 +22,7 @@ dotenv.config();
 const port = process.env.PORT;
 const app = express();
 
+app.use(cors());
 app.use('/', exchangeRouter);
 app.use('/', currencyRouter);
 
