@@ -1,4 +1,4 @@
-FROM node
+FROM node:18.10.0-alpine3.16
 
 WORKDIR /usr/src/app
 
@@ -9,7 +9,5 @@ RUN npm install
 COPY . .
 
 RUN npm run build
-
-EXPOSE 3000
 
 CMD [ "npm", "start" ]
