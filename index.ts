@@ -13,13 +13,14 @@ import currencyRouter from './routes/currencyRouter';
 import exchangeRouter from './routes/exchangeRouter';
 import CurrencyService from './services/CurrencyService';
 import ExchangeService from './services/ExchangeService';
+import swaggerDocs from './utils/swagger';
 
 dayjs.extend(utc);
 dayjs.extend(customParseFormat);
 
 dotenv.config();
 
-const port = process.env.PORT;
+const port = Number(process.env.PORT) || 3000;
 const app = express();
 
 app.use(cors());
@@ -39,6 +40,7 @@ const startApp = async () => {
     await CurrencyService.fetch();
 
     app.listen(port, () => console.log(`Server started on port ${port}`));
+    swaggerDocs(app, port);
     const cronRule = process.env.CRON_RULE || '5 * * * *';
     schedule.scheduleJob(cronRule, ExchangeService.fetchCurrentRates);
   } catch (e) {
