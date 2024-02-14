@@ -11,3 +11,17 @@ const Exchange = new mongoose.Schema<TExchange>({
 });
 
 export default mongoose.model('Exchange', Exchange);
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    Rates:
+ *      type: object
+ *      additionalProperties:
+ *        type: integer
+ *      example:
+ *        EUR: 1.1
+ *        RUB: 0.011
+ *        USD: 1
+ */
