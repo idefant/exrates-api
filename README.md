@@ -60,13 +60,22 @@ Data is collected once a day from [Open Exchange Rates](https://openexchangerate
 
 ## Production
 
-To build production version:
+1. Create `docker-compose.yml` with content:
+```yml
+version: "3.8"
 
-1. Clone this repo
+services:
+  exrates-api:
+    image: idefant/exrates-api
+    container_name: exrates-api
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - "8182:3000"
+```
 2. Create `.env` and fill in similarly `.env.sample`
-3. `docker build -t exrates .`
-4. `docker run -p 8182:3000 -d exrates`
-5. Check the url operation http://localhost:8182/currencies
+3. Run `docker compose up -d`
 
 ## Development
 

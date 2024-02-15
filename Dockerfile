@@ -20,8 +20,6 @@ FROM node:18.10.0-alpine3.16
 USER node:node
 WORKDIR /usr/src/app
 
-COPY --from=builder --chown=node:node /usr/src/app/dist ./dist
-COPY --from=builder --chown=node:node /usr/src/app/node_modules ./node_modules
-COPY --from=builder --chown=node:node /usr/src/app/package.json ./package.json
+COPY --from=builder --chown=node:node /usr/src/app .
 
 CMD [ "npm", "start" ]
