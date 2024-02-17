@@ -85,6 +85,9 @@ router.get(
  *               type: array
  *               items:
  *                 type: object
+ *                 required:
+ *                   - date
+ *                   - rates
  *                 properties:
  *                   date:
  *                     type: string
@@ -126,6 +129,9 @@ router.get(
  *               type: array
  *               items:
  *                 type: object
+ *                 required:
+ *                   - date
+ *                   - rates
  *                 properties:
  *                   date:
  *                     type: string
@@ -156,6 +162,9 @@ router.get(
  *           application/json:
  *             schema:
  *               type: object
+ *               required:
+ *                 - date
+ *                 - rates
  *               properties:
  *                 date:
  *                   type: string
