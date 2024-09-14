@@ -15,13 +15,43 @@ export default mongoose.model('Exchange', Exchange);
 /**
  * @openapi
  * components:
- *  schemas:
- *    Rates:
- *      type: object
- *      additionalProperties:
- *        type: integer
- *      example:
- *        EUR: 1.1
- *        RUB: 0.011
- *        USD: 1
+ *   schemas:
+ *     Rates:
+ *       type: object
+ *       additionalProperties:
+ *         type: integer
+ *       example:
+ *         EUR: 1.1
+ *         RUB: 0.011
+ *         USD: 1
+ *
+ *     DateRates:
+ *       type: object
+ *       additionalProperties:
+ *         $ref: '#/components/schemas/Rates'
+ *       example:
+ *         2024-02-12:
+ *           EUR: 1.1
+ *           RUB: 0.011
+ *           USD: 1
+ *         2024-02-13:
+ *           EUR: 1.1
+ *           RUB: 0.011
+ *           USD: 1
+ *         2024-02-14:
+ *           EUR: 1.1
+ *           RUB: 0.011
+ *           USD: 1
+ *
+ *     LastDateRates:
+ *       type: object
+ *       required:
+ *         - date
+ *         - rates
+ *       properties:
+ *         date:
+ *           type: string
+ *           format: date
+ *         rates:
+ *           $ref: '#/components/schemas/Rates'
  */
