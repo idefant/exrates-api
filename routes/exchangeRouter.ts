@@ -82,15 +82,7 @@ router.get(
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   date:
- *                     type: string
- *                     format: date
- *                   rates:
- *                     $ref: '#/components/schemas/Rates'
+ *               $ref: '#/components/schemas/DateRates'
  */
 router.get(
   '/period/simple/:date',
@@ -123,15 +115,7 @@ router.get(
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   date:
- *                     type: string
- *                     format: date
- *                   rates:
- *                     $ref: '#/components/schemas/Rates'
+ *               $ref: '#/components/schemas/DateRates'
  */
 router.get(
   '/period/advanced',
@@ -155,13 +139,7 @@ router.get(
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 date:
- *                   type: string
- *                   format: date
- *                 rates:
- *                   $ref: '#/components/schemas/Rates'
+ *               $ref: '#/components/schemas/LastDateRates'
  */
 router.get('/last', query(symbolsQuerySchema), ExchangeController.getLast);
 
